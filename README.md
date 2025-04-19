@@ -2,6 +2,8 @@
 
 This project provides a starting point for building an AI assistant that leverages the Model Context Protocol (MCP) to interact with various external tools and services (MCP Servers).
 
+(Based on the reference implementation: https://github.com/modelcontextprotocol/python-sdk)
+
 ## Overview
 
 The core of the project is `mcp_client.py`, which implements a client that:
@@ -38,21 +40,28 @@ The core of the project is `mcp_client.py`, which implements a client that:
 
 1.  **Prerequisites:**
     *   Python 3.13 or later.
-    *   `uv` (Python package installer/resolver).
-2.  **Clone the repository (if applicable):**
+    *   [`uv`](https://github.com/astral-sh/uv) (Python package installer/resolver).
+    *   Install `uv` if you don't have it:
+        *   **macOS / Linux:** `curl -LsSf https://astral.sh/uv/install.sh | sh`
+        *   **Windows:** `powershell -c "irm https://astral.sh/uv/install.ps1 | iex"`
+2.  **Clone the repository:**
     ```bash
-    git clone <repository-url>
-    cd mcp-agent
+    git clone https://github.com/julianarroyavez/mcp-client
+    cd mcp-client
     ```
 3.  **Install Dependencies:**
     ```bash
     uv sync
     ```
 4.  **Create Environment File:**
-    *   Copy `.env.example` to `.env` (if an example file exists) or create `.env` manually.
-    *   Fill in the required environment variables, such as `OPENAI_API_KEY` and any credentials needed by your configured MCP servers (e.g., database URLs, other API keys).
+    *   Copy `.env.example` to `.env`.
+    *   Fill in the required environment variables, such as `OPENAI_API_KEY` and any credentials needed by your configured MCP servers (database URLs, other API keys).
 5.  **Configure MCP Servers:**
     *   Edit `mcp_config.json` to define the MCP servers you want the agent to connect to. Specify the command to run each server, any necessary arguments (`args`), and environment variables (`env`).
+    *   **Example Server Configuration:** The `mcp_config.json` might include examples like:
+        *   **Brave Search:** ([Info](https://mcpservers.org/servers/modelcontextprotocol/brave-search)) Provides web search capabilities. Requires an API key ([Get Key](https://api-dashboard.search.brave.com/login)) which should be added to your `.env` file (e.g., `BRAVE_SEARCH_API_KEY=your_key_here`).
+        *   **MCP Alchemy:** ([GitHub](https://github.com/runekaagaard/mcp-alchemy/blob/main/README.md)) Allows interaction with databases (e.g., PostgreSQL). Requires database connection details, typically a connection string, added to your `.env` file (e.g., `DATABASE_URL=postgresql://user:pass@host:port/db`).
+    *   **Note:** These are just examples. You can modify `mcp_config.json` and `.env` to add, remove, or change the MCP servers used by the agent according to your needs.
 
 ## Running the Agent
 
