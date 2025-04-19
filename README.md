@@ -29,7 +29,7 @@ The core of the project is `mcp_client.py`, which implements a client that:
 
 *   `mcp_client.py`: The main application script.
 *   `mcp_config.json`: Configuration file defining MCP servers, their commands, environment variables, and tools. **Do not commit sensitive data directly here if possible; prefer environment variables.**
-*   `.env`: Stores environment variables (API keys, etc.). **This file should NOT be committed to Git.** (Ensure it's in `.gitignore`).
+*   `.env.example`: Stores environment variables (API keys, etc.). 
 *   `pyproject.toml`: Defines project metadata and dependencies managed by `uv`.
 *   `uv.lock`: Lock file for reproducible dependency installation with `uv`.
 *   `.gitignore`: Specifies intentionally untracked files that Git should ignore.
