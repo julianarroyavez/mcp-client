@@ -15,7 +15,7 @@ from openai import OpenAI
 from mcp import ClientSession
 from mcp.client.stdio import stdio_client, StdioServerParameters
 
-MODEL = "o4-mini"
+MODEL = "gpt-4.1-nano"
 
 
 class MCPClient:
