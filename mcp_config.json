@@ -1,0 +1,89 @@
+{
+    "mcpServers": {
+      "database-p2p-local": {
+        "command": "uvx",
+        "args": [
+          "--from",
+          "mcp-alchemy==2025.04.09.091234",
+          "--with",
+          "psycopg[binary]",
+          "mcp-alchemy"
+        ],
+        "env": {
+          "DB_URL": "postgresql+psycopg://user:password@localhost:9814/p2p-julian"
+        },
+        "alwaysAllow": [
+          "all_table_names",
+          "execute_query",
+          "filter_table_names",
+          "schema_definitions"
+        ]
+      },
+      "database-p2p-test": {
+        "command": "uvx",
+        "args": [
+          "--from",
+          "mcp-alchemy==2025.04.09.091234",
+          "--with",
+          "psycopg[binary]",
+          "mcp-alchemy"
+        ],
+        "env": {
+          "DB_URL": "postgresql+psycopg://user:password@localhost:9814/peer-to-peer-trading"
+        },
+        "alwaysAllow": [
+          "all_table_names",
+          "execute_query",
+          "filter_table_names",
+          "schema_definitions"
+        ]
+      },
+      "brave-search": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-brave-search"
+        ],
+        "env": {
+          "BRAVE_API_KEY": "KEY"
+        },
+        "alwaysAllow": [
+          "brave_web_search",
+          "brave_local_search"
+        ]
+      },
+      "filesystem": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-filesystem",
+          "/home/julian/"
+        ],
+        "alwaysAllow": [
+          "read_file",
+          "read_multiple_files",
+          "write_file",
+          "edit_file",
+          "create_directory",
+          "list_directory",
+          "move_file",
+          "directory_tree",
+          "search_files",
+          "get_file_info",
+          "list_allowed_directories"
+        ]
+      },
+      "mcp-julian": {
+        "command": "uv",
+        "args": [
+          "run",
+          "--with",
+          "mcp[cli]",
+          "mcp",
+          "run",
+          "/mnt/c/Users/julia/Documents/julian-mcp/main.py"
+        ],
+        "alwaysAllow": ["get_today_sentence"]
+      }
+    }
+  }
